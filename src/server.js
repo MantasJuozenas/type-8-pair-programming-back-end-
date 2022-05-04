@@ -4,6 +4,7 @@ const cors = require('cors');
 const { dbConfig } = require('./config');
 const creatingDb = require('./routes/creatingDb');
 const petsRoutes = require('./routes/petsRoutes');
+const medicationsRoutes = require('./routes/medicationsRoutes');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 
 app.use('/api', creatingDb);
 app.use('/api', petsRoutes);
+app.use('/api', medicationsRoutes);
 
 app.all('*', (req, res) => {
   res.status(404).json({ error: 'page not found' });
