@@ -1,9 +1,0 @@
-POST http://localhost:3306/v1/createDb/pets
-###
-POST http://localhost:3306/v1/createDb/logs
-###
-POST http://localhost:3306/v1/createDb/medications
-###
-POST http://localhost:3306/v1/createDb/prescriptions
-###
-GET http://localhost:3306/v1/pets 
