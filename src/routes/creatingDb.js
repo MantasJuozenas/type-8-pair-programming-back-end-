@@ -10,7 +10,6 @@ creatingDb.post('/createDb/pets', async (req, res) => {
     conn = await mysql.createConnection(dbConfig);
     const sql = `CREATE TABLE ${dbConfig.database}.pets (id INT AUTO_INCREMENT , name TEXT , dob DATE , client_email VARCHAR(255) , archived INT(2) DEFAULT '0' , PRIMARY KEY (id)) ENGINE = InnoDB;`;
     const [result] = await conn.query(sql);
-    console.log(result);
     res.json(result);
   } catch (error) {
     console.log('creating db error=====', error);
@@ -26,7 +25,6 @@ creatingDb.post('/createDb/logs', async (req, res) => {
     conn = await mysql.createConnection(dbConfig);
     const sql = `CREATE TABLE ${dbConfig.database}.logs (id INT AUTO_INCREMENT , pets_id INT , description TEXT , status TEXT , PRIMARY KEY (id)) ENGINE = InnoDB;`;
     const [result] = await conn.query(sql);
-    console.log(result);
     res.json(result);
   } catch (error) {
     console.log('creating db error=====', error);
@@ -42,7 +40,6 @@ creatingDb.post('/createDb/medications', async (req, res) => {
     conn = await mysql.createConnection(dbConfig);
     const sql = `CREATE TABLE ${dbConfig.database}.medications (id INT AUTO_INCREMENT , name TEXT, description TEXT , PRIMARY KEY (id)) ENGINE = InnoDB;`;
     const [result] = await conn.query(sql);
-    console.log(result);
     res.json(result);
   } catch (error) {
     console.log('creating db error=====', error);
@@ -58,7 +55,6 @@ creatingDb.post('/createDb/prescriptions', async (req, res) => {
     conn = await mysql.createConnection(dbConfig);
     const sql = `CREATE TABLE ${dbConfig.database}.prescriptions (id INT AUTO_INCREMENT , medication_id INT, pet_id INT , comment TEXT , timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (id)) ENGINE = InnoDB;`;
     const [result] = await conn.query(sql);
-    console.log(result);
     res.json(result);
   } catch (error) {
     console.log('creating db error=====', error);
