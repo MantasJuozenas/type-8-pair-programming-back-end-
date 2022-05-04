@@ -73,7 +73,7 @@ petsRoutes.delete('/pets/:petsId', async (req, res) => {
     }
 
     if (result.affectedRows === 1) {
-      res.json('delete ok');
+      res.json({ success: true, msg: 'delete ok' });
       return;
     }
     throw new Error('something wrong in deleting pets');
