@@ -16,9 +16,9 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
-app.use('/api', creatingDb);
-app.use('/api', petsRoutes);
-app.use('/api', medicationsRoutes);
+app.use('/v1', creatingDb);
+app.use('/v1', petsRoutes);
+app.use('/v1', medicationsRoutes);
 
 app.all('*', (req, res) => {
   res.status(404).json({ error: 'page not found' });
