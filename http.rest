@@ -5,3 +5,5 @@ POST http://localhost:3306/api/createDb/logs
 POST http://localhost:3306/api/createDb/medications
 ###
 POST http://localhost:3306/api/createDb/prescriptions
+###
+GET http://localhost:3306/api/pets 
