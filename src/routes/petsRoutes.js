@@ -8,7 +8,7 @@ petsRoutes.get('/pets', async (req, res) => {
   let conn;
   try {
     conn = await mysql.createConnection(dbConfig);
-    const sql = 'SELECT * FROM pets';
+    const sql = 'SELECT * FROM pets WHERE archived = 0';
     const [result] = await conn.query(sql);
     res.json(result);
   } catch (error) {
