@@ -27,4 +27,25 @@ prescriptionsRoutes.post('/prescriptions', async (req, res) => {
   }
 });
 
+prescriptionsRoutes.get('/prescriptions', async (req, res) => {
+  let conn;
+  try {
+    conn = await mysql.createConnection(dbConfig);
+    // eslint-disable-next-line operator-linebreak
+    const sql =
+      'SELECT * FROM ((prescriptions LEFT JOIN medications ON prescriptions.medication_id = medications.id) LEFT JOIN pets ON prescriptions.pet_id = pets.id)';
+    const [result] = await conn.query(sql);
+    res.json(result);
+  } catch (error) {
+    console.log('error in getting prescriptions===', error);
+    res.status(500).json({ err: 'something is wrong' });
+  } finally {
+    await conn?.end();
+  }
+});
+
 module.exports = prescriptionsRoutes;
+
+//SELECT * FROM (((prescriptions INNER JOIN medications ON prescriptions.medication_id = medications.id) INNER JOIN pets ON prescriptions.pet_id = pets.id) ON medications.name = medication_name)
+
+//SELECT prescriptions.id, prescriptions.medication_id, prescriptions.pet_id, medications.name as medication_name, medications.description FROM medications, prescriptions
