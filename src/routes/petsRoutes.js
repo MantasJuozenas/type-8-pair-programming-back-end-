@@ -44,7 +44,7 @@ petsRoutes.delete('/pets/:petsId', async (req, res) => {
   let conn;
   try {
     const { petsId } = req.params;
-    console.log('petsId ===', petsId);
+
     conn = await mysql.createConnection(dbConfig);
     const sql = 'UPDATE pets SET archived = 1 WHERE id = ?';
     const [result] = await conn.execute(sql, [petsId]);
