@@ -1,9 +1,9 @@
-POST http://localhost:3306/api/createDb/pets
+POST http://localhost:3306/v1/createDb/pets
 ###
-POST http://localhost:3306/api/createDb/logs
+POST http://localhost:3306/v1/createDb/logs
 ###
-POST http://localhost:3306/api/createDb/medications
+POST http://localhost:3306/v1/createDb/medications
 ###
-POST http://localhost:3306/api/createDb/prescriptions
+POST http://localhost:3306/v1/createDb/prescriptions
 ###
-GET http://localhost:3306/api/pets 
+GET http://localhost:3306/v1/pets 

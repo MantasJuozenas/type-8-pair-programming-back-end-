@@ -18,6 +18,7 @@ petsRoutes.get('/pets', async (req, res) => {
     await conn?.end();
   }
 });
+
 petsRoutes.post('/pets', async (req, res) => {
   let conn;
   try {
@@ -40,6 +41,7 @@ petsRoutes.post('/pets', async (req, res) => {
     await conn?.end();
   }
 });
+
 petsRoutes.delete('/pets/:petsId', async (req, res) => {
   let conn;
   try {
@@ -49,9 +51,7 @@ petsRoutes.delete('/pets/:petsId', async (req, res) => {
     const sql = 'UPDATE pets SET archived = 1 WHERE id = ?';
     const [result] = await conn.execute(sql, [petsId]);
     if (result.affectedRows !== 1) {
-      res
-        .status(400)
-        .json({ success: false, error: `user with id ${petsId} was not found` });
+      res.status(400).json({ success: false, error: `user with id ${petsId} was not found` });
       return;
     }
 
