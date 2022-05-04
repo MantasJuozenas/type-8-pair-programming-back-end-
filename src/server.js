@@ -6,6 +6,7 @@ const creatingDb = require('./routes/creatingDb');
 const petsRoutes = require('./routes/petsRoutes');
 const medicationsRoutes = require('./routes/medicationsRoutes');
 const logsRoutes = require('./routes/logsRoutes');
+const prescriptionsRoutes = require('./routes/prescriptionsRoutes');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use('/v1', creatingDb);
 app.use('/v1', petsRoutes);
 app.use('/v1', medicationsRoutes);
 app.use('/v1', logsRoutes);
+app.use('/v1', prescriptionsRoutes);
 
 app.all('*', (req, res) => {
   res.status(404).json({ error: 'page not found' });
