@@ -36,7 +36,7 @@ prescriptionsRoutes.get('/prescriptions/:id', async (req, res) => {
     // eslint-disable-next-line operator-linebreak
     const sql =
       'SELECT medications.name AS medication_name, pets.name, medications.description, pets.dob, pets.client_email, pets.archived, prescriptions.id, medications.id AS med_id, pets.id AS pets_id, prescriptions.timestamp, prescriptions.comment FROM prescriptions INNER JOIN medications ON prescriptions.medication_id = medications.id INNER JOIN pets ON prescriptions.pet_id = pets.id WHERE pets.id = ?';
-    const [result] = await conn.query(sql, [id]);
+    const [result] = await conn.execute(sql, [id]);
     res.json(result);
   } catch (error) {
     console.log('error in getting prescriptions===', error);
