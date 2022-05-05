@@ -28,12 +28,13 @@ logsRoutes.post('/logs', async (req, res) => {
   }
 });
 
-logsRoutes.get('/logs', async (req, res) => {
+logsRoutes.get('/logs/:id', async (req, res) => {
   let conn;
+  const { id } = req.params;
   try {
     conn = await mysql.createConnection(dbConfig);
-    const sql = 'SELECT * FROM logs INNER JOIN pets ON logs.pets_id=pets.id;';
-    const [result] = await conn.query(sql);
+    const sql = 'SELECT * FROM logs INNER JOIN pets ON logs.pets_id=pets.id WHERE pets.id = ?';
+    const [result] = await conn.execute(sql, [id]);
     res.json(result);
   } catch (error) {
     console.log('error in getting logs ===', error);
