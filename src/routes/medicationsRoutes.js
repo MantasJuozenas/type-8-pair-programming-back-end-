@@ -31,7 +31,8 @@ medicationsRoutes.post('/medications', async (req, res) => {
     const sql = 'INSERT INTO medications (name, description) VALUES (?, ?)';
     const [result] = await conn.execute(sql, [name, description]);
     if (result.affectedRows === 1) {
-      res.json({ success: 'medications post successfully created' });
+      res.json({ success: true, msg: 'Medication post was created successfully' });
+      return;
     }
     throw new Error('something went wrong posting medications');
   } catch (error) {

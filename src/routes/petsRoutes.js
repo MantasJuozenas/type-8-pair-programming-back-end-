@@ -31,7 +31,8 @@ petsRoutes.post('/pets', async (req, res) => {
     const sql = 'INSERT INTO pets (name, dob, client_email) VALUES (?, ?, ?)';
     const [result] = await conn.execute(sql, [name, dob, client_email]);
     if (result.affectedRows === 1) {
-      res.json({ success: 'pets post successfully created' });
+      res.json({ success: true, msg: 'Pet post was created successfully' });
+      return;
     }
     throw new Error('something went wrong posting pets');
   } catch (error) {

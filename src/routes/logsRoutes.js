@@ -16,7 +16,8 @@ logsRoutes.post('/logs', async (req, res) => {
     const sql = 'INSERT INTO logs (pets_id, description, status) VALUES (?, ?, ?)';
     const [result] = await conn.execute(sql, [pets_id, description, status]);
     if (result.affectedRows === 1) {
-      res.json({ success: 'logs post successfully created' });
+      res.json({ success: true, msg: 'Log post was created successfully' });
+      return;
     }
     throw new Error('something went wrong posting logs');
   } catch (error) {
